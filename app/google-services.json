@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "340753551847",
+    "firebase_url": "https://soumyaprojects.firebaseio.com",
+    "project_id": "soumyaprojects",
+    "storage_bucket": "soumyaprojects.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340753551847:android:2b8262d8734670e32e6d42",
+        "android_client_info": {
+          "package_name": "com.soumya.soumyafirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340753551847-v159ksujd0srdpfrmj5tnu1blacgisi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvaL6nZaqq2NY3ropNPKZuJ2HfA-Exeno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340753551847-v159ksujd0srdpfrmj5tnu1blacgisi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340753551847:android:c143045cb77428ea2e6d42",
+        "android_client_info": {
+          "package_name": "com.soumyahealthcare.healthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340753551847-v159ksujd0srdpfrmj5tnu1blacgisi5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvaL6nZaqq2NY3ropNPKZuJ2HfA-Exeno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340753551847-v159ksujd0srdpfrmj5tnu1blacgisi5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
