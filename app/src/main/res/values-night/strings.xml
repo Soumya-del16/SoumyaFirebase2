@@ -1,11 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SoumyaFirebase</string>
     <string name="name">Name</string>
-    <string name="email">E-mail</string>
-    <string name="password">password</string>
-    <string name="age">Age</string>
-    <string name="city">City</string>
-    <string name="confrm_password">Confirm Password</string>
     <string name="signin">SignIn</string>
     <string name="entervalidemail">Enter valid Email</string>
     <string name="entervalidpassword">Enter valide Paswword</string>

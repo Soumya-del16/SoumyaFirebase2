@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActiivty">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/sixteen_dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/name"
+            android:autofillHints="name"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/email"
+            android:autofillHints="@string/email"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp"/>
+
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/password"
+            android:autofillHints="@string/password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="16dp"/>
+        <EditText
+            android:id="@+id/editTextconfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/confrm_password"
+            android:autofillHints="@string/confrm_password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/age"
+            android:autofillHints="@string/age"
+            android:maxLength="3"
+            android:inputType="number"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextCity"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:hint="@string/city"
+            android:inputType="text"
+            android:autofillHints="@string/city"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"/>
+
+    </LinearLayout>
+
+</ScrollView>
