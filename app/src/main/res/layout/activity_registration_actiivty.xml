@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/fifty_dp"
         android:padding="@dimen/sixteen_dp"
         android:gravity="center">
 
@@ -37,6 +38,7 @@
             android:layout_height="@dimen/fifty_dp"
             android:hint="@string/password"
             android:autofillHints="@string/password"
+            android:maxLength="12"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"/>
         <EditText
@@ -66,10 +68,18 @@
             android:inputType="text"
             android:autofillHints="@string/city"
             android:layout_marginBottom="16dp"/>
+        <TextView
+            android:id="@+id/password_error_mesg2"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:maxLines="5"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/fifty_dp"
             android:layout_height="wrap_content"
             android:text="@string/register"/>
 

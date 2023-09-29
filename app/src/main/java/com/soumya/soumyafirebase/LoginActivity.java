@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.core.utilities.Utilities;
 import com.soumya.soumyafirebase.apputilities.AppUtilites;
-import com.soumya.soumyafirebase.models.firebasemodels.UserData;
 
 public class LoginActivity extends AppCompatActivity {
     private static  final String TAG_NAME = LoginActivity.class.getName();
@@ -31,8 +31,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email , password;
     private TextView password_error_mesg;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+            finish();
+            //  reload();
+        }
+    }
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,72 +68,87 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String semail = email.getText().toString();
-                String spass = password.getText().toString();
+                if(isInternetAvailable()) {
+                    String semail = email.getText().toString();
+                    String spass = password.getText().toString();
 
-                if(AppUtilites.isvalidEmailId(semail) && AppUtilites.isValidPassword(spass)){
+                    if (!semail.isEmpty() && !spass.isEmpty()) {
 
-                    mAuth.signInWithEmailAndPassword(semail, spass)
-                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (AppUtilites.isvalidEmailId(semail) && AppUtilites.isValidPassword(spass)) {
+                            signInwithEmailPassword(semail, spass);
+                        } else if (AppUtilites.isValidPassword(spass)) {
+                            if (semail.equals("Fininfocom") && spass.equals("Fin@123")) {
+                                signInwithEmailPassword("soumyarelli516@gmail.com", "Test@123");
+                            } else {
+                                password_error_mesg.setText("Not Valid Credentails");
+                            }
 
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        Log.d(TAG_NAME, "signInWithEmail:success");
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        updateUI(user);
+                        } else {
+                            if (!AppUtilites.isvalidEmailId(semail)) {
+                                email.setError(getString(R.string.entervalidemail));
+                            }
+                            if (!AppUtilites.isValidPassword(spass)) {
+                                password.setError(getString(R.string.entervalidpassword));
+                                password_error_mesg.setText("* Password must contain : \n" +
+                                        "Atleast one capital alphbet,number" +
+                                        "Atlest one Special character" +
+                                        "Max letters between 8 to 12");
+                            }
 
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Log.w(TAG_NAME, "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                        updateUI(null);
-                                    }
-                                }
-                            });
+                            //Toast.makeText(LoginActivity.this, "Please Enter Valid Email or Password", Toast.LENGTH_SHORT).show();
+                        }
 
-                }
-                else {
-                    if(!AppUtilites.isvalidEmailId(semail)){
-                        email.setError(getString(R.string.entervalidemail));
+                    } else {
+                        email.setError("Empty");
+                        password.setError("Empty");
+                        password_error_mesg.setText("* Please Enter Provide Credentials");
                     }
-                    if (!AppUtilites.isValidPassword(spass)){
-                        password.setError(getString(R.string.entervalidpassword));
-                        password_error_mesg.setText("* Password must contain : \n" +
-                                "Atleast one capital alphbet,number" +
-                                "Atlest one Special character");
-                    }
-
-                    //Toast.makeText(LoginActivity.this, "Please Enter Valid Email or Password", Toast.LENGTH_SHORT).show();
+                }else {
+                    performAction();
                 }
-
             }
         });
 
     }
 
-    private void updateUI(FirebaseUser user) {
+    private void signInwithEmailPassword(String semail, String spass) {
+        mAuth.signInWithEmailAndPassword(semail, spass)
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            Log.d(TAG_NAME, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user,semail,spass);
+
+                        } else {
+                            Log.w(TAG_NAME, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                           // updateUI(null, semail, spass);
+                        }
+                    }
+                });
+    }
+
+    private void updateUI(FirebaseUser user, String semail, String spass) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // Name, email address, and profile photo Url
             String name = user.getDisplayName();
             String email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
 
-            // Check if user's email is verified
             boolean emailVerified = user.isEmailVerified();
 
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
             String uid = user.getUid();
 
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
             finish();
+            Toast.makeText(LoginActivity.this, "Login Successed.",
+                    Toast.LENGTH_SHORT).show();
 
         }
         else {
@@ -132,4 +156,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
+    private boolean isInternetAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
+        return false;
+    }
+
+    private void performAction() {
+        Toast.makeText(this, "Action performed with internet", Toast.LENGTH_SHORT).show();
+    }
+
 }

@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/fifty_dp"
             android:hint="@string/password"
+            android:maxLength="12"
             android:autofillHints="@string/password"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"/>
@@ -36,12 +37,14 @@
             android:layout_width="wrap_content"
             android:textColor="@android:color/holo_red_dark"
             android:maxLines="5"
+            android:gravity="center"
             android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/buttonCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifty_dp"
             android:text="@string/signin"/>
         <Button
             android:id="@+id/buttonRegistered"

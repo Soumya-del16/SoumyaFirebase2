@@ -3,7 +3,7 @@ package com.soumya.soumyafirebase.models.firebasemodels;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
-public class UserData {
+public class SampleUserData {
 
 
     private  String uid;
@@ -14,11 +14,11 @@ public class UserData {
     private  String city;
     private  String emailname;
 
-    public UserData() {
+    public SampleUserData() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public UserData(String uid,String name, String email, String password, String age, String city,String emailname) {
+    public SampleUserData(String uid, String name, String email, String password, String age, String city, String emailname) {
         this.uid = uid;
         this.name = name;
         this.email = email;

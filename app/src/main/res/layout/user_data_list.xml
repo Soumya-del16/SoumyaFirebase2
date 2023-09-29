@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/ten_dp"
+    app:cardElevation="@dimen/four_dp"
+    android:layout_margin="@dimen/four_dp"
+    android:background="@color/white"
+    app:cardCornerRadius="@dimen/four_dp"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Name: John Doe"/>
+
+    <TextView
+        android:id="@+id/textViewAge"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age: 30"/>
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email: john.doe@example.com"/>
+
+    <TextView
+        android:id="@+id/textViewCity"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="City: New York"/>
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date: 2023-09-29"/>
+
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

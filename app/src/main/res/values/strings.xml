@@ -10,4 +10,10 @@
     <string name="entervalidemail">Enter valid Email</string>
     <string name="entervalidpassword">Enter valide Paswword</string>
     <string name="register">Create Account</string>
+    <string name="sort_by_name">By Name</string>
+    <string name="sort_by_age">By Age</string>
+    <string name="sort_by_city">By City</string>
+    <string name="filters">Filter</string>
+    <string name="logout">Logout</string>
+    <string name="no_data">No data found</string>
 </resources>
