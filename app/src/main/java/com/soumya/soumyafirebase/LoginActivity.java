@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                 password_error_mesg.setText("* Password must contain : \n" +
                                         "Atleast one capital alphbet,number" +
                                         "Atlest one Special character" +
-                                        "Max letters between 8 to 12");
+                                        "Max letters between 6 to 12");
                             }
 
                             //Toast.makeText(LoginActivity.this, "Please Enter Valid Email or Password", Toast.LENGTH_SHORT).show();
