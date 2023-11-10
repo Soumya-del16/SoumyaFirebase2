@@ -28,7 +28,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.soumya.soumyafirebase.adapters.UserRecyclerAdapter;
-import com.soumya.soumyafirebase.models.SampleModel;
 import com.soumya.soumyafirebase.models.firebasemodels.SampleUserData;
 
 import java.util.ArrayList;
